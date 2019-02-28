@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.Commands;
 
 namespace EngineModule
 {
@@ -21,8 +22,13 @@ namespace EngineModule
         public override void Load()
         {
             base.Load();
+        }
+
+        [CommandHandler("EngineClick")]
+        public void engineModuleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Form shellForm = (Form)_parentWorkItem.Items.Get("ShellForm");
-            EngineForm engineForm=new EngineForm();
+            EngineForm engineForm = new EngineForm();
             engineForm.MdiParent = shellForm;
             engineForm.Show();
         }
